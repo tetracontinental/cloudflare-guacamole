@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM ubuntu:latest
 LABEL maintainer="matt@matthewrogers.org"
 
 ENV HOME /root
@@ -19,20 +19,13 @@ RUN mkdir /etc/guacamole/lib
 ADD guacamole.properties /etc/guacamole/guacamole.properties
 
 #Instlal CloudflareD
-RUN apt update 
+RUN apt update -y
 RUN apt install wget -y
 RUN wget https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -O /root/cloudflared.deb
 RUN dpkg -i /root/cloudflared.deb
 RUN rm /root/cloudflared.deb
 
-#Start The Tunnel and Login
-RUN cloudflared service install eyJhIjoiYj...
-
 #Setup Guacamole
-RUN cd /etc/apt/sources.list.d/
-sudo sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
-
-RUN apt-get update -y
 RUN apt install guacd -y
 RUN apt install tomcat9 -y
 RUN apt install iproute2 -y
@@ -42,7 +35,7 @@ RUN mkdir /var/run/mysqld
 RUN chown -R mysql:root /var/run/mysqld
 
 #Setup the Guacamole Client in Tomcat
-RUN wget "https://dlcdn.apache.org/guacamole/1.5.5/binary/guacamole-1.5.5.war" -O /var/lib/tomcat9/webapps/guacamole.war
+RUN wget "https://archive.apache.org/dist/guacamole/1.3.0/binary/guacamole-1.3.0.war" -O /var/lib/tomcat9/webapps/guacamole.war
 RUN ln -s /etc/guacamole/ /var/lib/tomcat9/.guacamole
 RUN mkdir /usr/share/tomcat9/logs
 RUN ln -s /usr/share/java/mariadb-java-client.jar /etc/guacamole/lib/
@@ -51,9 +44,9 @@ RUN export CATALINA_BASE=/var/lib/tomcat9
 RUN mkdir /etc/guacamole/extensions
 
 #Get the DB Driver for Guacamole
-RUN wget https://dlcdn.apache.org/guacamole/1.5.5/binary/guacamole-auth-jdbc-1.5.5.tar.gz -O /root/guacamole-auth-jdbc-1.5.5.tar.gz
-RUN tar xvfz /root/guacamole-auth-jdbc-1.5.5.tar.gz -C /root/
-RUN cp /root/guacamole-auth-jdbc-1.5.5/mysql/guacamole-auth-jdbc-mysql-1.5.5.jar /etc/guacamole/extensions
+RUN wget https://archive.apache.org/dist/guacamole/1.3.0/binary/guacamole-auth-jdbc-1.3.0.tar.gz -O /root/guacamole-auth-jdbc-1.3.0.tar.gz
+RUN tar xvfz /root/guacamole-auth-jdbc-1.3.0.tar.gz -C /root/
+RUN cp /root/guacamole-auth-jdbc-1.3.0/mysql/guacamole-auth-jdbc-mysql-1.3.0.jar /etc/guacamole/extensions
 
 EXPOSE 8080/tcp
 
