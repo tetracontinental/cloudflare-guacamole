@@ -50,10 +50,6 @@ RUN mkdir /etc/guacamole/extensions
 RUN wget https://dlcdn.apache.org/guacamole/1.5.5/binary/guacamole-auth-jdbc-1.5.5.tar.gz -O /root/guacamole-auth-jdbc-1.5.5.tar.gz
 RUN tar xvfz /root/guacamole-auth-jdbc-1.5.5.tar.gz -C /root/
 RUN cp /root/guacamole-auth-jdbc-1.5.5/mysql/guacamole-auth-jdbc-mysql-1.5.5.jar /etc/guacamole/extensions
-ADD config.yml /root/.cloudflared/config.yml
-
-#Lets add the DNS at the End, this seems to cause a problem if we do it within a milisecond as it will attach to an existing tunnel
-RUN cloudflared tunnel route dns guacamole guacamole
 
 EXPOSE 8080/tcp
 
