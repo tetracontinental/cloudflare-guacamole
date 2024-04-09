@@ -7,9 +7,6 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 ENV GOPATH /root/go
 ENV DEBIAN_FRONTEND noninteractive
-
-### Change this to Match your Cloudflare!!!!!! 
-ENV CLOUDFLARETEAM yourcloudflareteamname
 ENV TZ Asia/Tokyo
 ###
 
