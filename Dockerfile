@@ -29,11 +29,7 @@ RUN dpkg -i /root/cloudflared.deb
 RUN rm /root/cloudflared.deb
 
 #Start The Tunnel and Login
-RUN cloudflared tunnel login
-#Makes this cert /root/.cloudflared/cert.pem
-
-#Creates the tunnel and adds the DNS
-RUN cloudflared tunnel create guacamole
+RUN cloudflared service install eyJhIjoiYj...
 
 #Setup Guacamole
 RUN apt install guacd -y
