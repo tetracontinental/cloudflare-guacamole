@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start the database
-mariadbd &
+mariadbd --user=root &
 
 sleep 3
 
@@ -23,6 +23,5 @@ export CATALINA_HOME=/usr/share/tomcat9
 export CATALINA_BASE=/var/lib/tomcat9
 /usr/share/tomcat9/bin/catalina.sh start
 
-
 # Start the tunnel
-cloudflared tunnel run guacamole
+cloudflared tunnel run --token eyJhIjoiYj...
