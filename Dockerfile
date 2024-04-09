@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ### Change this to Match your Cloudflare!!!!!! 
 ENV CLOUDFLARETEAM yourcloudflareteamname
-ENV TZ America/New_York
+ENV TZ Asia/Tokyo
 ###
 
 #ADD local insideContainer
