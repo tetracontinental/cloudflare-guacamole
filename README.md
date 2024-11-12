@@ -14,7 +14,7 @@ You cannot access this Guacamole instance outside of the authenication policies 
 6. Installs mariadb and configures for Guacamole
 7. Install and configures Tomcat with Guacamole client
 
-![Drawing of Cloudflare Guacamole](cloudflareguacamole.png "Example Drawing")
+![Drawing of Cloudflare Guacamole](./readme_sources/cloudflareguacamole.png "Example Drawing")
 
 ---
 

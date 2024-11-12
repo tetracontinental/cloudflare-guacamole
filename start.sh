@@ -24,4 +24,4 @@ export CATALINA_BASE=/var/lib/tomcat9
 /usr/share/tomcat9/bin/catalina.sh start
 
 # Start the tunnel
-cloudflared tunnel run --token eyJhIjoiYj...
+cloudflared tunnel run --token <YOUR_TUNNEL_TOKEN>
