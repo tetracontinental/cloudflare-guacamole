@@ -23,7 +23,7 @@ You cannot access this Guacamole instance outside of the authenication policies 
 Git 📡 clone the repository and configure two files, Dockerfile and config.yml. You'll want to set your timezone, set your Cloudflare Team name, and then the domain you use for your Cloudflare Team.
 
 ```bash
-git clone https://github.com/RamboRogers/cloudflareguacamole
+git clone https://github.com/tetracontane/cloudflareguacamole
 ```
 
 **config.yml** - Change your domain.
